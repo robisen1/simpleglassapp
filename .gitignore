@@ -2,12 +2,17 @@
 ## Eclipse
 #################
 
+client_secrets.json
+session.secret
+
+
 *.pydevproject
 .project
 .metadata
 bin/
 tmp/
 *.tmp
+*.pyc
 *.bak
 *.swp
 *~.nib
