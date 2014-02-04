@@ -1,1 +1,0 @@
-hellow world in python for glass mirror api
