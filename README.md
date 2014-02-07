@@ -5,5 +5,6 @@ can do:
 
 to do:
 Document framework as a tutorial
+Strip out unneeded code
 Finish tutorial 
 
