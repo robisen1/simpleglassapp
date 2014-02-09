@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Modified for simple Hello World Application
+
 """Request Handler for /main endpoint."""
 
 __author__ = 'alainv@google.com (Alain Vongsouvanh)'
@@ -44,12 +46,6 @@ TIMELINE_ITEM_TEMPLATE_URL = '/templates/card.html'
 
 
 
-CARD_HTML = """
-<article class='auto-paginate'>
-<h2 class='blue text-large'>Hello World</h2>
-<p>Hello <em class='yellow'>World.</em> </p><br/>
-</article>
-"""
 
 class _BatchCallback(object):
   """Class used to track batch request responses."""
@@ -103,10 +99,16 @@ class MainHandler(webapp2.RequestHandler):
 
     body = {
           'notification': {'level': 'DEFAULT'},
-          'title': 'hello world',     #secret way of stashing the tasklist id in the timeline item
+          'title': 'hello world',     
           'html': template.render(),
+          'text': 'Hi how are you doing?',
+          'speakableText':  'Hello World',
           'menuItems': [            
+              {'action': 'READ_ALOUD'},
               {'action': 'TOGGLE_PINNED'},
+              {'action': 'REPLY'},
+              {'action' : 'PLAY_VIDEO', 'payload' : 'http://localhost/static/videos/clipcanvas_14348_H264_640x360.mp4'},
+              {'action': 'OPEN_URI', 'payload' : 'http://www.google.com'},
               {'action': 'DELETE'}
           ]
       }
@@ -122,7 +124,7 @@ class MainHandler(webapp2.RequestHandler):
     memcache.delete(key=self.userid)
     self._render_template(message)
 
-  @util.auth_required
+  #@util.auth_required
   def post(self):
     """Execute the request and render the template."""
     operation = self.request.get('operation')
