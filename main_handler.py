@@ -107,7 +107,7 @@ class MainHandler(webapp2.RequestHandler):
               {'action': 'READ_ALOUD'},
               {'action': 'TOGGLE_PINNED'},
               {'action': 'REPLY'},
-              {'action' : 'PLAY_VIDEO', 'payload' : 'http://localhost/static/videos/clipcanvas_14348_H264_640x360.mp4'},
+              {'action': 'PLAY_VIDEO', 'payload' : 'http://localhost:8080/static/videos/clipcanvas_14348_H264_640x360.mp4'},
               {'action': 'OPEN_URI', 'payload' : 'http://www.google.com'},
               {'action': 'DELETE'}
           ]
