@@ -99,9 +99,15 @@ class MainHandler(webapp2.RequestHandler):
 
     body = {
           'notification': {'level': 'DEFAULT'},
+          'creator': {
+                      'kind': 'mirror#contact',          
+                      'displayName': 'Robi',
+                      'phoneNumber': '5558675309'
+                  },          
+          'location': { 'kind': 'mirror#location', 'id': 'home', 'latitude': 38.935963, 'longitude': -77.159423, 'displayName': 'Home'},
           'title': 'hello world',     
           'html': template.render(),
-          'text': 'Hi how are you doing?',
+          'text': 'Hello?',
           'speakableText':  'Hello World',
           'menuItems': [            
               {'action': 'READ_ALOUD'},
@@ -109,6 +115,9 @@ class MainHandler(webapp2.RequestHandler):
               {'action': 'REPLY'},
               {'action': 'PLAY_VIDEO', 'payload' : 'http://localhost:8080/static/videos/clipcanvas_14348_H264_640x360.mp4'},
               {'action': 'OPEN_URI', 'payload' : 'http://www.google.com'},
+              {'action': 'SHARE'},
+              {'action': 'VOICE_CALL'},
+              {'action': 'NAVIGATE'},
               {'action': 'DELETE'}
           ]
       }
