@@ -36,6 +36,15 @@ CAT_UTTERANCES = [
     "<em class='yellow'>Meow...</em>"
 ]
 
+Hello_Messages = [
+    "<em class='green'>Well Howdy Partner</em>",
+    "<em class='red'>Ola </em>",
+    "<em class='red'>dobar dan</em>",
+    "<em class='green'>Bonjour</em>",
+    "<em class='blue'>Jó napot</em>",
+    "<em class='red'> Kon-nichiwa</em>",
+    "<em class='yellow'>Guten Tag</em>"
+]
 
 class NotifyHandler(webapp2.RequestHandler):
   """Request Handler for notification pings."""
@@ -103,6 +112,20 @@ class NotifyHandler(webapp2.RequestHandler):
 
         self.mirror_service.timeline().update(
             id=item['id'], body=item).execute()
+
+      elif user_action.get('type') == 'CUSTOM':
+        # here we just detect this is the only CUSTOM menutiem and return a message
+        hellomessage = choice(Hello_Messages)
+
+        item['text'] = None
+        item['html'] = ("<article class='auto-paginate'>" +
+            "<p class='text-auto-size'>" +
+            hellomessage + "</p>" )
+        item['menuItems'] = [{ 'action': 'DELETE' }];
+
+        self.mirror_service.timeline().update(
+            id=item['id'], body=item).execute()
+
       else:
         logging.info(
             "I don't know what to do with this notification: %s", user_action)

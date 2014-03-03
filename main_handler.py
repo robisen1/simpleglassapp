@@ -118,6 +118,7 @@ class MainHandler(webapp2.RequestHandler):
               {'action': 'SHARE'},
               {'action': 'VOICE_CALL'},
               {'action': 'NAVIGATE'},
+              {'action': 'CUSTOM', 'id':'SAYHI', 'values': [{'displayName': 'Say Hi'}]},
               {'action': 'DELETE'}
           ]
       }
