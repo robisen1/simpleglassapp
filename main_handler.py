@@ -82,7 +82,7 @@ class MainHandler(webapp2.RequestHandler):
       template_values['contact'] = self.mirror_service.contacts().get(
         id='python-quick-start').execute()
     except errors.HttpError:
-      logging.info('Unable to find Python Quick Start contact.')
+      logging.info('Unable to find hello world contact.')
 
     timeline_items = self.mirror_service.timeline().list(maxResults=3).execute()
     template_values['timelineItems'] = timeline_items.get('items', [])
@@ -96,7 +96,7 @@ class MainHandler(webapp2.RequestHandler):
         template_values['locationSubscriptionExists'] = True
 
     template = jinja_environment.get_template('templates/card.html')
-
+    # this is the first menu the user sees or the main menu
     body = {
           'notification': {'level': 'DEFAULT'},
           'creator': {
